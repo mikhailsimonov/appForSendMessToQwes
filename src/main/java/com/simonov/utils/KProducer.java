@@ -16,30 +16,32 @@ public class KProducer {
 
 
     private static final Logger LOGGER = Logger.getLogger(KProducer.class.getName()); //объявляем логер для логирования
-    public static Future<RecordMetadata> kafkaSend(String url, String topic, String message){
-    //settings
-    Properties properties = new Properties();
-    properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, url);
-    properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-    properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-    //producer
-    Producer<String, String> producer = new KafkaProducer<String, String>(properties);
-    //send message
-    Future<RecordMetadata>  response =  producer.send(new ProducerRecord<String, String>(topic, message), new Callback() {
 
-        @Override
-        public void onCompletion(RecordMetadata metadata, Exception exception) {
-            LOGGER.info("check callback after send message in qwe");
+    public static Future<RecordMetadata> kafkaSend(String url, String topic, String message) {
+        //settings
+        Properties properties = new Properties();
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, url);
+        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        //producer
+        Producer<String, String> producer = new KafkaProducer<String, String>(properties);
+        //send message
+        Future<RecordMetadata> response = producer.send(new ProducerRecord<String, String>(topic, message), new Callback() {
 
-            if (exception != null) { //проверяю что запрос успешно отправился в очередь
-                exception.printStackTrace();
-                LOGGER.info("Exception :");
-            }else{
-                LOGGER.info("message flew into qwe successfully");
+            @Override
+            public void onCompletion(RecordMetadata metadata, Exception exception) {
+                LOGGER.info("check callback after send message in qwe");
+
+                if (exception != null) { //проверяю что запрос успешно отправился в очередь
+                    exception.printStackTrace();
+                    LOGGER.info("Exception :");
+                } else {
+                    LOGGER.info("message flew into qwe successfully");
+                }
             }
-        }
-    });
-    //end
-    producer.close();
-    return response;
-}}
+        });
+        //end
+        producer.close();
+        return response;
+    }
+}
