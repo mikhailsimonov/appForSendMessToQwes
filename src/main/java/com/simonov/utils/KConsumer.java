@@ -6,6 +6,7 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.swing.*;
 import java.util.*;
 
 import static com.simonov.frames.MainFrame.group1;
@@ -23,8 +24,8 @@ public class KConsumer {
     public static String commit = "off";
     public static String start = "off";
     public static String topic = null;
-    public static ArrayList<String> topicsList = new ArrayList<String>();
-    private final static String BOOTSTRAP_SERVERS
+    public static TreeSet<String> topicsList = new TreeSet<String>();
+    private static String BOOTSTRAP_SERVERS
             = qweServer;
 
     /*    public static void setTopic(String topicName) {
@@ -65,7 +66,7 @@ public class KConsumer {
 
         // Настройки консюмера
         final Consumer<Long, String> consumer
-                = new org.apache.kafka.clients.consumer.KafkaConsumer<Long, String>(props);
+                = new KafkaConsumer<Long, String>(props);
 
         // Подсписаться на топик
         consumer.subscribe(Collections.singletonList(topic));
@@ -127,9 +128,7 @@ public class KConsumer {
     public static void getTopics() {
         final Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
-                BOOTSTRAP_SERVERS);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG,
-                group1);
+                qweServer);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
                 StringDeserializer.class.getName());
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
@@ -139,8 +138,10 @@ public class KConsumer {
         topics = consumer.listTopics();
         consumer.close();
 
+        topicsList.clear();
         for (Map.Entry<String, List<PartitionInfo>> entry : topics.entrySet()) {
             for (PartitionInfo partitionInfo : entry.getValue()) {
+
                 topicsList.add(partitionInfo.topic());
             }
         }

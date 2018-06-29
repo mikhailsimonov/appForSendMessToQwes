@@ -6,6 +6,8 @@ import com.simonov.utils.KProducer;
 
 import javax.swing.*;
 
+import java.util.Iterator;
+
 import static com.simonov.utils.JMSutil.sendMessage;
 import static com.simonov.utils.KConsumer.*;
 
@@ -29,39 +31,39 @@ public class MainFrame extends JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        jPanel1 = new javax.swing.JPanel();
-        serverField = new javax.swing.JTextField();
-        topicQwe = new javax.swing.JTextField();
-        groupId = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        buttonPut = new javax.swing.JButton();
-        buttonGet = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jRadioButtonKafka = new javax.swing.JRadioButton();
-        jRadioButtonIbm = new javax.swing.JRadioButton();
-        jTextFieldJmsType = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextFieldPort = new javax.swing.JTextField();
-        getListTopics = new javax.swing.JButton();
-        jToggleButtonCommitOnOff = new javax.swing.JToggleButton();
-        jToggleButtonClearQwe = new javax.swing.JToggleButton();
-        fieldTimeForPool = new javax.swing.JTextField();
-        fieldGiveUp = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        responseWindow = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        messageWindow = new javax.swing.JTextArea();
+        jPanel1 = new JPanel();
+        serverField = new JTextField();
+        topicQwe = new JTextField();
+        groupId = new JTextField();
+        jLabel1 = new JLabel();
+        jLabel2 = new JLabel();
+        jLabel3 = new JLabel();
+        buttonPut = new JButton();
+        buttonGet = new JButton();
+        jLabel4 = new JLabel();
+        jLabel5 = new JLabel();
+        jLabel6 = new JLabel();
+        jRadioButtonKafka = new JRadioButton();
+        jRadioButtonIbm = new JRadioButton();
+        jTextFieldJmsType = new JTextField();
+        jLabel7 = new JLabel();
+        jTextFieldPort = new JTextField();
+        getListTopics = new JButton();
+        jToggleButtonCommitOnOff = new JToggleButton();
+        jToggleButtonClearQwe = new JToggleButton();
+        fieldTimeForPool = new JTextField();
+        fieldGiveUp = new JTextField();
+        jLabel8 = new JLabel();
+        jLabel9 = new JLabel();
+        jScrollPane1 = new JScrollPane();
+        responseWindow = new JTextArea();
+        jScrollPane3 = new JScrollPane();
+        messageWindow = new JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("ChatBotQaUtils");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("QaUtil v.4.0"));
+        jPanel1.setBorder(BorderFactory.createTitledBorder("QaUtil v.4.2"));
         serverField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 serverFieldActionPerformed(evt);
@@ -120,7 +122,7 @@ public class MainFrame extends JFrame {
 
         jLabel7.setText("jms type");
 
-        jTextFieldPort.setText("port");
+        jTextFieldPort.setText("9092");
         jTextFieldPort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPortActionPerformed(evt);
@@ -176,127 +178,127 @@ public class MainFrame extends JFrame {
         jTextFieldJmsType.setEnabled(false);
         responseWindow.setEditable(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                         .addComponent(jLabel5)
                                                         .addComponent(jLabel4)
                                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                                                                         .addComponent(topicQwe)
-                                                                                        .addComponent(groupId, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                                                                                        .addComponent(groupId, GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                                                                                         .addComponent(serverField))
                                                                                 .addGap(18, 18, 18)
-                                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                                                                 .addComponent(jLabel1)
-                                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                .addComponent(jTextFieldPort, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                                                .addComponent(jTextFieldPort, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
                                                                                         .addComponent(jLabel2)
                                                                                         .addComponent(jLabel3)
                                                                                         .addComponent(jLabel6)))
                                                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                                .addComponent(jTextFieldJmsType, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(jTextFieldJmsType, GroupLayout.PREFERRED_SIZE, 380, GroupLayout.PREFERRED_SIZE)
                                                                                 .addGap(18, 18, 18)
                                                                                 .addComponent(jLabel7)))
                                                                 .addGap(71, 71, 71)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                                                         .addComponent(jRadioButtonKafka)
-                                                                        .addComponent(jRadioButtonIbm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(jRadioButtonIbm, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                                                        .addComponent(fieldGiveUp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                                                                                        .addComponent(fieldTimeForPool, javax.swing.GroupLayout.Alignment.LEADING))
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                                                                        .addComponent(fieldGiveUp, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                                                                                        .addComponent(fieldTimeForPool, GroupLayout.Alignment.LEADING))
+                                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                                                         .addComponent(jLabel8)
                                                                                         .addComponent(jLabel9)))))
                                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 596, GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(18, 18, 18)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                        .addComponent(buttonPut, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                                                                        .addComponent(getListTopics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                        .addComponent(buttonGet, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                                                                        .addComponent(jToggleButtonCommitOnOff, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                        .addComponent(jToggleButtonClearQwe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(buttonPut, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                                                                        .addComponent(getListTopics, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(buttonGet, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                                                                        .addComponent(jToggleButtonCommitOnOff, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(jToggleButtonClearQwe, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                         .addComponent(jScrollPane1))
                                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(serverField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(serverField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel1)
                                         .addComponent(jRadioButtonKafka)
-                                        .addComponent(jTextFieldPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextFieldPort, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addGap(3, 3, 3)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(topicQwe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(topicQwe, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel2)
                                         .addComponent(jRadioButtonIbm))
                                 .addGap(4, 4, 4)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(groupId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(groupId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel3)
-                                        .addComponent(fieldTimeForPool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fieldTimeForPool, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextFieldJmsType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jTextFieldJmsType, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel7)
-                                        .addComponent(fieldGiveUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fieldGiveUp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                         .addComponent(jLabel6)
                                                         .addComponent(buttonPut))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(getListTopics)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jToggleButtonCommitOnOff)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(buttonGet)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jToggleButtonClearQwe))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel5)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap())
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap())
         );
 
@@ -304,6 +306,10 @@ public class MainFrame extends JFrame {
     }// </editor-fold>
 
     private void buttonPutActionPerformed(java.awt.event.ActionEvent evt) {
+        getActualServerName();
+        getActualTopic();
+        getActualGroupId();
+        getActualJMSType();
 
         if (jRadioButtonIbm.isSelected()) {
             if (jTextFieldPort.getText().isEmpty() || topicQwe.getText().isEmpty() || serverField.getText().isEmpty() || messageWindow.getText().isEmpty()) {
@@ -348,13 +354,14 @@ public class MainFrame extends JFrame {
     }
 
     private void getActionPerformed(java.awt.event.ActionEvent evt) {
+        getActualServerName();
+        getActualTopic();
+        getActualGroupId();
+
         jRadioButtonIbm.setSelected(false);
         responseWindow.setText("");
-        qweServer = serverField.getText() + ":" + jTextFieldPort.getText();
-        group1 = groupId.getText();
-        topic = topicQwe.getText();
         String resp = KConsumer.runConsumer();
-        responseWindow.setText(resp + "\nmessages are read from the queue");
+        responseWindow.append(resp + "\n\n----messages are read from the queue----");
 
     }
 
@@ -381,18 +388,32 @@ public class MainFrame extends JFrame {
 
     private void getListTopicsActionPerformed(java.awt.event.ActionEvent evt) {
 
-        qweServer = serverField.getText() + ":" + jTextFieldPort.getText();
-        group1 = groupId.getText();
-        getTopics();
-        for (int i = 0; i < topicsList.size(); i++) {
-            responseWindow.append(topicsList.get(i) + "\n");
-        }
-    }
+        getActualServerName();
+        if(serverField.getText().isEmpty() || jTextFieldPort.getText().isEmpty() || qweServer.equals("port")){
+            JOptionPane.showMessageDialog(null, "fill in the required fields server or port!", "Alert", JOptionPane.INFORMATION_MESSAGE);
+        }else {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    getActualServerName();
+                    responseWindow.setText("");
+                    getTopics();
+                    Iterator<String> iterator = topicsList.iterator();
+                    while (iterator.hasNext()) {
+                        String tcs = iterator.next();
+                        if(tcs.isEmpty()){
+                            JOptionPane.showMessageDialog(null, "check that the required fields are filled in correctly", "INFO", JOptionPane.INFORMATION_MESSAGE);
+                        }else{
+                        responseWindow.append(tcs + "\n");
+                    }}
+                }
+            }).start();
+        }}
 
     private void jToggleButtonClearQweActionPerformed(java.awt.event.ActionEvent evt) {
-        qweServer = serverField.getText() + ":" + jTextFieldPort.getText();
-        topic = topicQwe.getText();
-        group1 = groupId.getText();
+        getActualServerName();
+        getActualTopic();
+        getActualGroupId();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -424,6 +445,24 @@ public class MainFrame extends JFrame {
             }
         }).start();
     }
+
+    public void getActualServerName(){
+        qweServer = serverField.getText() + ":" + jTextFieldPort.getText();
+        }
+
+    public void getActualGroupId(){
+        group1 = groupId.getText();
+    }
+
+
+    public void getActualTopic(){
+        topic = topicQwe.getText();
+    }
+
+    public void getActualJMSType(){
+        jTextFieldJmsType.getText();
+    }
+
 
     private void fieldTimeForPoolActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -461,6 +500,11 @@ public class MainFrame extends JFrame {
             responseWindow.setEditable(false);
             fieldTimeForPool.setEnabled(true);
             fieldGiveUp.setEnabled(true);
+            jTextFieldPort.setText("9092");
+            serverField.setText("");
+            jTextFieldJmsType.setText("");
+            groupId.setText("");
+            topicQwe.setText("");
 
 
         } else if (state.equals("ibm")) {
@@ -479,6 +523,11 @@ public class MainFrame extends JFrame {
             responseWindow.setEditable(false);
             fieldTimeForPool.setEnabled(false);
             fieldGiveUp.setEnabled(false);
+            jTextFieldPort.setText("1414");
+            serverField.setText("");
+            jTextFieldJmsType.setText("");
+            groupId.setText("");
+            topicQwe.setText("");
 
         } else {
             jRadioButtonIbm.setSelected(false);
@@ -508,9 +557,9 @@ public class MainFrame extends JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -520,7 +569,7 @@ public class MainFrame extends JFrame {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
@@ -540,35 +589,35 @@ public class MainFrame extends JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JButton buttonPut;
-    private javax.swing.JButton buttonGet;
-    private javax.swing.JTextField groupId;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField serverField;
-    private javax.swing.JTextField topicQwe;
+    private JButton buttonPut;
+    private JButton buttonGet;
+    private JTextField groupId;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JLabel jLabel3;
+    private JPanel jPanel1;
+    private JScrollPane jScrollPane1;
+    private JTextField serverField;
+    private JTextField topicQwe;
     public static String qweServer;
     public static String group1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jRadioButtonIbm;
-    private javax.swing.JRadioButton jRadioButtonKafka;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextFieldJmsType;
-    private javax.swing.JTextField jTextFieldPort;
-    private javax.swing.JButton getListTopics;
-    private javax.swing.JToggleButton jToggleButtonCommitOnOff;
-    private javax.swing.JTextField fieldGiveUp;
-    private javax.swing.JTextField fieldTimeForPool;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea responseWindow;
-    private javax.swing.JTextArea messageWindow;
-    private javax.swing.JToggleButton jToggleButtonClearQwe;
+    private JLabel jLabel4;
+    private JLabel jLabel5;
+    private JLabel jLabel6;
+    private JRadioButton jRadioButtonIbm;
+    private JRadioButton jRadioButtonKafka;
+    private JLabel jLabel7;
+    private JTextField jTextFieldJmsType;
+    private JTextField jTextFieldPort;
+    private JButton getListTopics;
+    private JToggleButton jToggleButtonCommitOnOff;
+    private JTextField fieldGiveUp;
+    private JTextField fieldTimeForPool;
+    private JLabel jLabel8;
+    private JLabel jLabel9;
+    private JScrollPane jScrollPane3;
+    private JTextArea responseWindow;
+    private JTextArea messageWindow;
+    private JToggleButton jToggleButtonClearQwe;
     // End of variables declaration
 }
